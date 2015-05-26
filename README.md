@@ -13,21 +13,21 @@ Capsules and Connectors.
 There is a rich set of support Capsules and Connectors. These include
 (in alphabetical order).
 
-* Button, Input Pin Adapter.
-* Capsule, Abstract Behaviour.
-* Clock, Timed Capsule with Counter.
-* Connector, Abstract Connector.
-* Controller, Run-time Scheduler.
-* Counter, Event Counter.
-* Display, Connector Probe to LCD.
-* Join, Control Flow.
-* LED, Output Pin Adapter.
-* Probe, Connector Trace.
-* Relay, Output Pin Adapter with trigger range.
-* TimedCapsule, Periodic Capsule.
-* TimedProbe, Periodic Connector Trace.
-* Trigger, Interrupt Pin Adapter.
-* Voltmeter, Analog Pin Adapter.
+* [Button] (./UML/Button.hh), Input Pin Adapter.
+* [Capsule] (./UML/Capsule.hh), Abstract Behaviour.
+* [Clock] (./UML/Clock.hh), Timed Capsule with Counter.
+* [Connector] (./UML/Connector.hh), Abstract Connector.
+* [Controller] (./UML/Controller.hh), Run-time Scheduler.
+* [Counter] (./UML/Counter.hh), Event Counter.
+* [Display] (./UML/Display.hh), Connector Probe to LCD.
+* [Join] (./UML/Join.hh), Control Flow.
+* [LED] (./UML/LED.hh), Output Pin Adapter.
+* [Probe] (./UML/Probe.hh), Connector Trace.
+* [Relay] (./UML/Relay.hh), Output Pin Adapter with trigger range.
+* [TimedCapsule] (./UML/TimedCapsule.hh), Periodic Capsule.
+* [TimedProbe] (./UML/TimedProbe.hh), Periodic Connector Trace.
+* [Trigger] (./UML/Trigger.hh), Interrupt Pin Adapter.
+* [Voltmeter] (./UML/Voltmeter.hh), Analog Pin Adapter.
 
 # Install
 
