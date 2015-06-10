@@ -50,16 +50,16 @@
 #include <HD44780.h>
 
 // HD44780 driver built-in adapters
-HD44780::Port4b port;
+// HD44780::Port4b port;
 // HD44780::SR3W port;
 // HD44780::SR3WSPI port;
 // HD44780::SR4W port;
 
 // I2C expander io port based adapters
-// #include <PCF8574.h>
-// #include <MJKDZ_LCD_Module.h>
+#include <PCF8574.h>
+#include <MJKDZ_LCD_Module.h>
 // MJKDZ_LCD_Module port;
-// MJKDZ_LCD_Module port(0);
+MJKDZ_LCD_Module port(0);
 // #include <GY_IICLCD.h>
 // GY_IICLCD port;
 // #include <DFRobot_IIC_LCD_Module.h>
@@ -73,8 +73,8 @@ HD44780::Port4b port;
 
 // HD44780 variants; 16X1, 16X2, 16X4, 20X4, default 16X2
 // HD44780 lcd(&port, 20, 4);
-// HD44780 lcd(&port, 16, 4);
-HD44780 lcd(&port);
+HD44780 lcd(&port, 16, 4);
+// HD44780 lcd(&port);
 
 using namespace UML;
 
@@ -89,8 +89,8 @@ OWI owi(Board::D4);
 Clock clock(tick, 1024);
 Thermometer sensor(&owi, temp);
 
-const char display_tick_prefix[] __PROGMEM = "Clock: ";
-const char display_tick_suffix[] __PROGMEM = "";
+const char display_tick_prefix[] __PROGMEM = "Clock:";
+const char display_tick_suffix[] __PROGMEM = " s";
 Display<Clock::Tick, 0, 0>
 display_tick(tick, &lcd, (str_P) display_tick_prefix, (str_P) display_tick_suffix);
 
