@@ -119,10 +119,10 @@ void setup()
 
   // Connect and start the sensor
   sensor.connect(0);
-  sensor.begin();
+  sensor.start();
 
   // Start the clock
-  clock.begin();
+  clock.start();
 }
 
 void loop()
