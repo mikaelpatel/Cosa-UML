@@ -51,8 +51,8 @@ public:
    * @param[in] connector to probe.
    * @param[in] ms timeout period in ms (Default 2048).
    */
-  TimedProbe(str_P name, T& connector, uint16_t ms = 2048) :
-    TimedCapsule(ms),
+  TimedProbe(Job::Scheduler* scheduler, str_P name, T& connector, uint16_t ms = 2048) :
+    TimedCapsule(scheduler, ms),
     m_name(name),
     m_connector(connector)
   {}

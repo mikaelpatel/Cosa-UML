@@ -64,8 +64,8 @@ public:
    * @param[in] tick connector.
    * @param[in] ms period (default 1024 ms).
    */
-  Clock(Tick& tick, uint16_t ms = DEFAULT_TIMEOUT) :
-    TimedCapsule(ms),
+  Clock(Job::Scheduler* scheduler, Tick& tick, uint16_t ms = DEFAULT_TIMEOUT) :
+    TimedCapsule(scheduler, ms),
     m_tick(tick)
   {}
 

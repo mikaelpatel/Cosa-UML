@@ -68,8 +68,8 @@ public:
    * @param[in] temp connector.
    * @param[in] ms period.
    */
-  Thermometer(OWI* pin, Temperature& temp, uint16_t ms = DEFAULT_TIMEOUT) :
-    TimedCapsule(ms / 2),
+  Thermometer(Job::Scheduler* scheduler, OWI* pin, Temperature& temp, uint16_t ms = DEFAULT_TIMEOUT) :
+    TimedCapsule(scheduler, ms / 2),
     DS18B20(pin),
     m_temp(temp),
     m_state(CONVERT)

@@ -55,13 +55,15 @@ public:
   /**
    * Construct Button monitoring given digital pin and generating
    * signal. The pin is sampled with the given period.
+   * @param[in] scheduler.
    * @param[in] pin digital pin for button.
    * @param[in] signal connector.
    * @param[in] ms period (default timeout 64 ms).
    */
-  Button(Board::DigitalPin pin, Signal& signal,
+  Button(Job::Scheduler* scheduler,
+	 Board::DigitalPin pin, Signal& signal,
 	 uint16_t ms = DEFAULT_TIMEOUT) :
-    TimedCapsule(ms),
+    TimedCapsule(scheduler, ms),
     InputPin(pin, InputPin::PULLUP_MODE),
     m_signal(signal)
   {}

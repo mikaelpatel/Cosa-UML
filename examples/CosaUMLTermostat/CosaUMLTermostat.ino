@@ -48,6 +48,9 @@
 
 using namespace UML;
 
+// Use watchdog job scheduler
+Watchdog::Scheduler scheduler;
+
 // Forward declaration of the connectors
 extern Thermometer::Temperature temp;
 extern Thermometer::Temperature min_temp;
@@ -58,7 +61,7 @@ OWI owi(Board::D4);
 
 // The capsules with data dependencies (connectors)
 Relay<Thermometer::Temperature> relay(temp, min_temp, max_temp, Board::LED);
-Thermometer sensor(&owi, temp);
+Thermometer sensor(&scheduler, &owi, temp);
 
 const char probe_name[] __PROGMEM = "temp";
 Probe<Thermometer::Temperature> probe((str_P) probe_name, temp);
@@ -76,11 +79,11 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLTermostat: started"));
 
   // Setup UML run-time
-  UML::begin();
+  UML::begin(&scheduler);
 
   // Connect and start the sensor
   sensor.connect(0);
-  sensor.begin();
+  sensor.start();
 }
 
 void loop()

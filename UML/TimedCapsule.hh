@@ -48,14 +48,14 @@ public:
    * Construct Timed Capsule with given period in milli-seconds.
    * @param[in] ms period.
    */
-  TimedCapsule(uint16_t ms) :
+  TimedCapsule(Job::Scheduler* scheduler, uint16_t ms) :
     Capsule(),
-    Periodic(ms)
+    Periodic(scheduler, ms)
   {}
 
 protected:
   /**
-   * @override Periodic
+   * @override Job
    * Schedule this capsule on timeout. Could also call behaviour
    * directly.
    */

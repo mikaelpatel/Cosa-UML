@@ -63,13 +63,15 @@ public:
    * Construct Voltmeter monitoring given analog pin and generating
    * samples on the given connector. The pin is sampled with the given
    * period.
+   * @param[in] scheduler.
    * @param[in] pin analog pin to monitor.
    * @param[in] sample connector.
    * @param[in] ms period (default 1024 ms).
    */
-  Voltmeter(Board::AnalogPin pin, Sample& sample,
+  Voltmeter(Job::Scheduler* scheduler,
+	    Board::AnalogPin pin, Sample& sample,
 	    uint16_t ms = DEFAULT_TIMEOUT) :
-    TimedCapsule(ms),
+    TimedCapsule(scheduler, ms),
     AnalogPin(pin),
     m_sample(sample)
   {}

@@ -51,18 +51,22 @@
 
 #include <UML.h>
 
+#include "Cosa/Watchdog.hh"
 #include "Cosa/Trace.hh"
 #include "Cosa/IOStream/Driver/UART.hh"
 
 using namespace UML;
+
+// Use watchdog job scheduler
+Watchdog::Scheduler scheduler;
 
 // Forward declaration of the connectors
 extern Signal onoff;
 extern Clock::Tick tick;
 
 // The capsules with data dependencies (connectors)
-Button b1(Board::D2, onoff);
-Clock c1(tick, 1024);
+Button b1(&scheduler, Board::D2, onoff);
+Clock c1(&scheduler, tick, 1024);
 LED l1(onoff);
 
 // Some probes to trace connector values
@@ -70,7 +74,7 @@ const char p1_name[] __PROGMEM = "tick";
 Probe<Clock::Tick> p1((str_P) p1_name, tick);
 
 const char p2_name[] __PROGMEM = "onoff";
-TimedProbe<Signal> p2((str_P) p2_name, onoff, 2048);
+TimedProbe<Signal> p2(&scheduler, (str_P) p2_name, onoff, 2048);
 
 // The wiring; control dependencies
 Capsule* const tick_listeners[] __PROGMEM = { &p1, &l1, NULL };
@@ -86,12 +90,12 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLCapsules: started"));
 
   // Start the UML run-time
-  UML::begin();
+  UML::begin(&scheduler);
 
   // Start the Timed Capsules
-  c1.begin();
-  b1.begin();
-  p2.begin();
+  c1.start();
+  b1.start();
+  p2.start();
 }
 
 void loop()

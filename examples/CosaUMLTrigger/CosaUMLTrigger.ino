@@ -41,6 +41,9 @@
 
 using namespace UML;
 
+// Use watchdog job scheduler
+Watchdog::Scheduler scheduler;
+
 // Define Counter type
 typedef Counter<Signal> Triggers;
 
@@ -53,7 +56,7 @@ Trigger trigger(Board::EXT0, s1);
 Triggers counter(s1, c1);
 
 const char probe_name[] __PROGMEM = "probe";
-TimedProbe<Triggers::Count> probe((str_P) probe_name, c1);
+TimedProbe<Triggers::Count> probe(&scheduler, (str_P) probe_name, c1);
 
 // The wiring; control dependencies
 Capsule* const s1_listeners[] __PROGMEM = { &counter, NULL };
@@ -69,10 +72,10 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLTrigger: started"));
 
   // Start UML run-time
-  UML::begin();
+  UML::begin(&scheduler);
 
   // Start the Timed Probe
-  probe.begin();
+  probe.start();
 
   // Enable the Trigger Capsule
   trigger.enable();

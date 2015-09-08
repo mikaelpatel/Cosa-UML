@@ -78,6 +78,9 @@ HD44780 lcd(&port, 16, 4);
 
 using namespace UML;
 
+// Use watchdog job scheduler
+Watchdog::Scheduler scheduler;
+
 // Forward declaration of the connectors
 extern Clock::Tick tick;
 extern Thermometer::Temperature temp;
@@ -86,8 +89,8 @@ extern Thermometer::Temperature temp;
 OWI owi(Board::D4);
 
 // The capsules with data dependencies (connectors)
-Clock clock(tick, 1024);
-Thermometer sensor(&owi, temp);
+Clock clock(&scheduler, tick, 1024);
+Thermometer sensor(&scheduler, &owi, temp);
 
 const char display_tick_prefix[] __PROGMEM = "Clock:";
 const char display_tick_suffix[] __PROGMEM = " s";
@@ -109,7 +112,7 @@ Thermometer::Temperature temp(temp_listeners, 0);
 void setup()
 {
   // Start the UML run-time
-  UML::begin();
+  UML::begin(&scheduler);
 
   // Start the lcd
   lcd.begin();

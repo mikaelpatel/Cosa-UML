@@ -32,9 +32,10 @@ namespace UML {
    * Start UML run-time; initiates necessary timers, etc.
    * @param[in] ms watchdog period (Default 16 ms).
    */
-  void begin(uint16_t ms = 16)
+  void begin(Watchdog::Scheduler* scheduler, uint16_t ms = 16)
   {
-    Watchdog::begin(ms, Watchdog::push_timeout_events);
+    Watchdog::begin(ms);
+    Watchdog::job(scheduler);
     RTC::begin();
   }
 

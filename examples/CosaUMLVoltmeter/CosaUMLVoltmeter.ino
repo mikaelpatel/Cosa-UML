@@ -38,11 +38,14 @@
 
 using namespace UML;
 
+// Use watchdog job scheduler
+Watchdog::Scheduler scheduler;
+
 // Forward declaration of the connectors
 extern Voltmeter::Sample s1;
 
 // The capsules with data dependencies (connectors)
-Voltmeter sensor(Board::A0, s1, 1024);
+Voltmeter sensor(&scheduler, Board::A0, s1, 1024);
 
 const char probe_name[] __PROGMEM = "probe";
 Probe<Voltmeter::Sample> probe((str_P) probe_name, s1);
@@ -58,10 +61,10 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLVoltmeter: started"));
 
   // Start UML run-time
-  UML::begin();
+  UML::begin(&scheduler);
 
   // Start the Timed Probe
-  sensor.begin();
+  sensor.start();
 }
 
 void loop()

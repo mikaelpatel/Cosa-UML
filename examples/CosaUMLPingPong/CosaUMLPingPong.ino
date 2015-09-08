@@ -37,7 +37,7 @@
  * @section Note
  * The measurement includes the test and decrement of the 16-bit
  * counter, reading the input connector, writing the output connector
- * and scheduling the listener. Total 13 us (208 clock cycles).
+ * and scheduling the listener. Total 12 us (192 clock cycles).
  * The inner signal port read/write and scheduling of the listener
  * takes 8 us (128 clock cycles).
  *
@@ -118,6 +118,9 @@ Echo ping(c3, c1);
 Echo pong(c1, c2);
 Echo pang(c2, c3);
 
+// Use the watchdog job scheduler
+Watchdog::Scheduler scheduler;
+
 // The wiring; control dependencies
 Capsule* const c1_listeners[] __PROGMEM = { &pong, NULL };
 Echo::Signal c1(c1_listeners, true);
@@ -148,7 +151,7 @@ void setup()
 #endif
 
   // Start UML run-time
-  UML::begin();
+  UML::begin(&scheduler);
 }
 
 void loop()
