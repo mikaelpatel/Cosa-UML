@@ -82,19 +82,19 @@ using namespace UML;
 Watchdog::Scheduler scheduler;
 
 // Forward declaration of the connectors
-extern Clock::Tick tick;
+extern UML::Clock::Tick tick;
 extern Thermometer::Temperature temp;
 
 // One-wire pin
 OWI owi(Board::D4);
 
 // The capsules with data dependencies (connectors)
-Clock clock(&scheduler, tick, 1024);
+UML::Clock clock(&scheduler, tick, 1024);
 Thermometer sensor(&scheduler, &owi, temp);
 
 const char display_tick_prefix[] __PROGMEM = "Clock:";
 const char display_tick_suffix[] __PROGMEM = " s";
-Display<Clock::Tick, 0, 0>
+Display<UML::Clock::Tick, 0, 0>
 display_tick(tick, &lcd, (str_P) display_tick_prefix, (str_P) display_tick_suffix);
 
 const char display_temp_prefix[] __PROGMEM = "Indoor:";
@@ -104,7 +104,7 @@ display_temp(temp, &lcd, (str_P) display_temp_prefix, (str_P) display_temp_suffi
 
 // The wiring; control dependencies (capsules)
 Capsule* const tick_listeners[] __PROGMEM = { &display_tick, NULL };
-Clock::Tick tick(tick_listeners, 0);
+UML::Clock::Tick tick(tick_listeners, 0);
 
 Capsule* const temp_listeners[] __PROGMEM = { &display_temp, NULL };
 Thermometer::Temperature temp(temp_listeners, 0);

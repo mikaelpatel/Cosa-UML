@@ -62,23 +62,23 @@ Watchdog::Scheduler scheduler;
 
 // Forward declaration of the connectors
 extern Signal onoff;
-extern Clock::Tick tick;
+extern UML::Clock::Tick tick;
 
 // The capsules with data dependencies (connectors)
 Button b1(&scheduler, Board::D2, onoff);
-Clock c1(&scheduler, tick, 1024);
+UML::Clock c1(&scheduler, tick, 1024);
 LED l1(onoff);
 
 // Some probes to trace connector values
 const char p1_name[] __PROGMEM = "tick";
-Probe<Clock::Tick> p1((str_P) p1_name, tick);
+Probe<UML::Clock::Tick> p1((str_P) p1_name, tick);
 
 const char p2_name[] __PROGMEM = "onoff";
 TimedProbe<Signal> p2(&scheduler, (str_P) p2_name, onoff, 2048);
 
 // The wiring; control dependencies
 Capsule* const tick_listeners[] __PROGMEM = { &p1, &l1, NULL };
-Clock::Tick tick(tick_listeners, 0);
+UML::Clock::Tick tick(tick_listeners, 0);
 
 Capsule* const onoff_listeners[] __PROGMEM = { &p2, &l1, NULL};
 Signal onoff(onoff_listeners, false);
