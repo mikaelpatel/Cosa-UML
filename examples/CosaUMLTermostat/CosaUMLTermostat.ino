@@ -79,7 +79,7 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLTermostat: started"));
 
   // Setup UML run-time
-  UML::begin(&scheduler);
+  UML::begin();
 
   // Connect and start the sensor
   sensor.connect(0);

@@ -151,7 +151,7 @@ void setup()
 #endif
 
   // Start UML run-time
-  UML::begin(&scheduler);
+  UML::begin();
 }
 
 void loop()

@@ -72,7 +72,7 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLTrigger: started"));
 
   // Start UML run-time
-  UML::begin(&scheduler);
+  UML::begin();
 
   // Start the Timed Probe
   probe.start();

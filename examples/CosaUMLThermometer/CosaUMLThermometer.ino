@@ -112,7 +112,7 @@ Thermometer::Temperature temp(temp_listeners, 0);
 void setup()
 {
   // Start the UML run-time
-  UML::begin(&scheduler);
+  UML::begin();
 
   // Start the lcd
   lcd.begin();

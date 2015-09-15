@@ -61,7 +61,7 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLVoltmeter: started"));
 
   // Start UML run-time
-  UML::begin(&scheduler);
+  UML::begin();
 
   // Start the Timed Probe
   sensor.start();

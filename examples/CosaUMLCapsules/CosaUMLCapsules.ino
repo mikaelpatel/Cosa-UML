@@ -90,7 +90,7 @@ void setup()
   trace.begin(&uart, PSTR("CosaUMLCapsules: started"));
 
   // Start the UML run-time
-  UML::begin(&scheduler);
+  UML::begin();
 
   // Start the Timed Capsules
   c1.start();
