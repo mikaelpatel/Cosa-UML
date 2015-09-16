@@ -84,7 +84,7 @@ public:
   }
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Print connector value at display position with prefix and suffix
    * string. Use width and precision if floating-point.
    */

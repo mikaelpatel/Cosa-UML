@@ -69,7 +69,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Read digital pin and update signal on change.
    */
   virtual void behavior()

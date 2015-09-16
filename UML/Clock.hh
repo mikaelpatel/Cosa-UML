@@ -70,7 +70,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Increment clock tick and schedule all capsules that listen for
    * clock update.
    */

@@ -64,7 +64,7 @@ public:
 
 protected:
   /**
-   * @override Interrupt::Handler
+   * @override{Interrupt::Handler}
    * Interrupt service callback on external interrupt pin change.
    * @param[in] arg argument from interrupt service routine.
    */

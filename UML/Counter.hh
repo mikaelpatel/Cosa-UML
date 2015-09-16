@@ -59,7 +59,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Count number of calls.
    */
   virtual void behavior()

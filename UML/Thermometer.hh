@@ -76,7 +76,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Request temperature conversion and read value.
    */
   virtual void behavior()

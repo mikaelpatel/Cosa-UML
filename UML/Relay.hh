@@ -65,7 +65,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Turn on relay when current value is less than min value,
    * and turn off when greater than max value.
    */

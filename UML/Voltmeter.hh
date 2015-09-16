@@ -77,7 +77,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Read analog pin, scale value, and update signal on change.
    */
   virtual void behavior()
@@ -86,7 +86,7 @@ public:
   }
 
   /**
-   * @override Sensor
+   * @override{Voltmeter}
    * Default sample scaling; range [0..1023] is scaled to [0.0..5.0] volt.
    * @param[in] sample value (integer).
    * @return scaled value (float).

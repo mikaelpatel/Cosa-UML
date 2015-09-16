@@ -55,7 +55,7 @@ public:
 
 protected:
   /**
-   * @override Job
+   * @override{Job}
    * Schedule this capsule on timeout. Could also call behaviour
    * directly.
    */

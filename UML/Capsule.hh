@@ -54,7 +54,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * The capsule behavior is run when any of the connectors it
    * listens on is changed.
    */

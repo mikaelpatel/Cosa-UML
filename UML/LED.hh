@@ -54,7 +54,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Blink the LED if the signal is true.
    */
   virtual void behavior()

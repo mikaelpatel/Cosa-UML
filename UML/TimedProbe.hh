@@ -58,7 +58,7 @@ public:
   {}
 
   /**
-   * @override UML::Capsule
+   * @override{UML::Capsule}
    * Print timestamp, probe name and connector value to trace output stream.
    */
   virtual void behavior()
