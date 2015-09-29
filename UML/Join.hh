@@ -71,7 +71,7 @@ public:
   {
     synchronized {
       m_current -= 1;
-      if (m_current != 0) synchronized_return (m_current);
+      if (m_current != 0) return (m_current);
       m_current = m_count;
     }
     controller.schedule(m_listeners);

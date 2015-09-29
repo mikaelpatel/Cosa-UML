@@ -44,7 +44,7 @@ Controller::schedule(Capsule* capsule)
 {
   if (UNLIKELY(m_cnt == QUEUE_MAX)) return (ENOMEM);
   synchronized {
-    if (capsule->is_scheduled) synchronized_return (0);
+    if (capsule->is_scheduled) return (0);
     capsule->is_scheduled = true;
     m_queue[m_put++] = capsule;
     if (UNLIKELY(m_put == QUEUE_MAX)) m_put = 0;
