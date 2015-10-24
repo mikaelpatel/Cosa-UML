@@ -82,7 +82,9 @@ public:
    */
   virtual void behavior()
   {
+    AnalogPin::powerup();
     m_sample = scale(sample());
+    AnalogPin::powerdown();
   }
 
   /**

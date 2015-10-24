@@ -45,7 +45,7 @@ Watchdog::Scheduler scheduler;
 extern Voltmeter::Sample s1;
 
 // The capsules with data dependencies (connectors)
-Voltmeter sensor(&scheduler, Board::A0, s1, 1024);
+Voltmeter sensor(&scheduler, Board::A0, s1, 1000);
 
 const char probe_name[] __PROGMEM = "probe";
 Probe<Voltmeter::Sample> probe((str_P) probe_name, s1);
