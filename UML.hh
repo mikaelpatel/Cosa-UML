@@ -21,7 +21,7 @@
 #ifndef COSA_UML_HH
 #define COSA_UML_HH
 
-#include "Cosa/RTC.hh"
+#include "Cosa/RTT.hh"
 #include "Cosa/Event.hh"
 #include "Cosa/Watchdog.hh"
 
@@ -35,7 +35,7 @@ namespace UML {
   void begin(uint16_t ms = 16)
   {
     Watchdog::begin(ms);
-    RTC::begin();
+    RTT::begin();
   }
 
   /**
