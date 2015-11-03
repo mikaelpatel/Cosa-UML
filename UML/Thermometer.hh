@@ -89,7 +89,7 @@ public:
     case READ:
       // Read temperature and scale to a float
       m_state = read_scratchpad() ? CONVERT : ERROR;
-      m_temp = get_temperature() * 0.0625;
+      m_temp = temperature() * 0.0625;
       break;
     case ERROR:
       // Error state; set error value and retry
