@@ -64,6 +64,7 @@ public:
    * Construct Thermometer monitoring given OWI bus and temperature
    * connnector. The temperature is sampled with the given period
    * (default 2048 ms).
+   * @param[in] scheduler.
    * @param[in] pin 1-wire bus.
    * @param[in] temp connector.
    * @param[in] ms period.

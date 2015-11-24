@@ -46,6 +46,7 @@ class TimedCapsule : public Capsule, public Periodic {
 public:
   /**
    * Construct Timed Capsule with given period in milli-seconds.
+   * @param[in] scheduler..
    * @param[in] ms period.
    */
   TimedCapsule(Job::Scheduler* scheduler, uint16_t ms) :

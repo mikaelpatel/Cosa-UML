@@ -61,6 +61,7 @@ public:
   /**
    * Construct Clock with given tick connector and period in
    * milli-seconds.
+   * @param[in] scheduler.
    * @param[in] tick connector.
    * @param[in] ms period (default 1024 ms).
    */

@@ -47,6 +47,7 @@ class TimedProbe : public TimedCapsule {
 public:
   /**
    * Construct Timed Probe for given connector and timeout period.
+   * @param[in] scheduler.
    * @param[in] name string in program memory.
    * @param[in] connector to probe.
    * @param[in] ms timeout period in ms (Default 2048).
